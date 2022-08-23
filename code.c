@@ -1,15 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+const double EPS = 1e-8;
+int isnul(double i)
+{
+return (abs(i) > EPS);//sravnivanie s 0
+
+}
 int func(double a, double b, double c, double* px1, double* px2, double* px)
 {
     double d;
-    d = pow(b, 2) - 4*a*c; // дискриминант
-    if (a == 0)
+    d = pow(b, 2) - 4*a*c;
+    if (isnul(a))
         {
-        if (b == 0)
+        if (isnul(b))
           {
-              if (c == 0)
+              if (isnul(c))
                 return 3;
              else
                 return 0;
@@ -42,7 +48,14 @@ int main()
 {
     double a, b, c;
     printf("enter a, b, c\n");
-    int p;
+    int p = scanf("%lf%lf%lf", &a, &b, &c);
+    int y;
+    if p < 3
+    {   continue;
+        while ((y = getchar()) != '\n' || y = getchar()) != ' ')
+    }
+
+
     double x1, x2, x;
     int n;
     n = func(a, b, c, &x1, &x2, &x);
